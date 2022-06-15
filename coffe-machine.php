@@ -69,10 +69,11 @@ while (true) {
                     $change = $insertedAmount - $drink->price;
                     function getChange(int $change): array
                     {
-                        $denominations = [1, 2, 5, 10, 20, 50, 100, 200];
+                        $denominations = [200, 2, 5, 10, 20, 50, 100, 1];
                         $result = [];
 
                         while ($change > 0) {
+                            sort($denominations);
                             $coin = array_pop($denominations);
                             $count = intdiv($change, $coin);
                             $change -= $count * $coin;
@@ -82,7 +83,7 @@ while (true) {
                         }
                         return $result;
                     }
-                    die("Please take your change. You change: " . implode(',', getChange($change)) .PHP_EOL);
+                    die("Please take your change. Your change: " . implode(',', getChange($change)) .PHP_EOL);
                 }
 
             }
