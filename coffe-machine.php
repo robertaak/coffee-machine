@@ -40,8 +40,9 @@ $menu = [$drink1, $drink2, $drink3, $drink4, $drink5];
 
 echo "Menu: ";
 foreach ($menu as $drink)
-{
-    echo "$drink->name,price: $drink->price; ";
+{   $formatted = ($drink->price/100);
+    $inUSD = number_format($formatted, 2);
+    echo "$drink->name,price: $$inUSD; ";
 }
 echo PHP_EOL;
 
@@ -103,6 +104,8 @@ while (true) {
 
     $wallet[$insertedCoin] -= 1;
     $insertedAmount += $insertedCoin;
-    echo "Balance: $insertedAmount" . PHP_EOL;
+    $formattedAmount = ($insertedAmount/100);
+    $inUSDAmount = number_format($formattedAmount, 2);
+    echo "Balance: $$inUSDAmount" . PHP_EOL;
 }
 
